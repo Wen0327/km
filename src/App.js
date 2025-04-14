@@ -3,10 +3,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { IntlProvider } from "react-intl";
 import zh from "./Locales/zh-TW.json";
 import en from "./Locales/en.json";
-import HomePage from "./Pages/HomePage";
-// import LogInPage from "./Pages/LogInPage";
-import CartPage from "./Pages/CartPage";
 import Navbar from "./Components/Navbar";
+import HomePage from "./Pages/HomePage";
+import CartPage from "./Pages/CartPage";
 import LogInPage from "./Pages/LogInPage";
 
 const messages = {
