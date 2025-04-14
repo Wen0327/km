@@ -1,14 +1,14 @@
 import React from "react";
 
 const categories = [
-  "特惠商品(數量有限 售完為止)",
-  "新品專區",
-  "防災專區",
-  "振宇零件專區",
-  "端件送90度轉接起子頭",
-  "建築五金",
-  "電料用品",
-  "手工具類",
+  "categories1",
+  "categories2",
+  "categories3",
+  "categories4",
+  "categories5",
+  "categories6",
+  "categories7",
+  "categories8",
 ];
 
 const CategorySidebar = () => {

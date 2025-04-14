@@ -7,8 +7,7 @@ import CartLight from "../Assets/CartLight.png";
 import CartDark from "../Assets/CartDark.png";
 import UserDark from "../Assets/UserDark.png";
 import UserLight from "../Assets/UserLight.png";
-
-
+import { MoonOutlined, SunOutlined, UserOutlined } from "@ant-design/icons";
 
 const { Search } = Input;
 
@@ -49,15 +48,17 @@ const Navbar = () => {
         />
 
         {/* Dark mode toggle */}
-        <Button onClick={toggleDarkMode} size="small">
-          {darkMode ? "☀️ Light" : "🌙 Dark"}
+        <Button onClick={toggleDarkMode} size="middle" shape="circle">
+          {darkMode ? <SunOutlined /> : <MoonOutlined />}
         </Button>
 
-        {/* Auth and Cart */}
-       <img style={{ width: 50 }} src={darkMode ? UserLight : UserDark} />
-        
-          <img style={{ width: 50 }} src={darkMode ? CartLight : CartDark} />
-        
+        <div>
+          <UserOutlined
+            style={darkMode ? { color: "white" } : { color: "black" }}
+          />
+        </div>
+
+        <img style={{ width: 50 }} src={darkMode ? CartLight : CartDark} />
       </div>
     </nav>
   );
