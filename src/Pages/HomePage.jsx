@@ -4,13 +4,11 @@ import CategorySidebar from "../Components/CategorySidebar";
 import ProductCard from "../Components/ProductCard";
 import Navbar from "../Components/Navbar";
 
-
-
-
-const HomePage = () => {
+const HomePage = (props) => {
+  const { setLocale } = props;
   return (
     <>
-      <Navbar />
+      <Navbar setLocale={setLocale} />
       <div className="flex flex-col lg:flex-row min-h-screen dark:bg-gray-900 dark:text-white">
         <aside className="w-full lg:w-1/5 border-r p-4">
           <CategorySidebar />

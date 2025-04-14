@@ -1,18 +1,23 @@
 // components/Navbar.jsx
 import React, { useState } from "react";
+import { useIntl, FormattedMessage } from "react-intl";
 import { Input, Select, Button } from "antd";
 import LogoLight from "../Assets/LogoLight.png";
 import LogoDark from "../Assets/LogoDark.png";
-import CartLight from "../Assets/CartLight.png";
-import CartDark from "../Assets/CartDark.png";
-import UserDark from "../Assets/UserDark.png";
-import UserLight from "../Assets/UserLight.png";
-import { MoonOutlined, SunOutlined, UserOutlined } from "@ant-design/icons";
+import {
+  GlobalOutlined,
+  MoonOutlined,
+  ShoppingCartOutlined,
+  SunOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
 
 const { Search } = Input;
 
-const Navbar = () => {
+const Navbar = (props) => {
+  const { setLocale } = props;
   const [darkMode, setDarkMode] = useState(false);
+  const intl = useIntl();
 
   const toggleDarkMode = () => {
     setDarkMode((prev) => !prev);
@@ -31,7 +36,7 @@ const Navbar = () => {
       <div className="flex items-center gap-4">
         {/* Antd Search bar */}
         <Search
-          placeholder="搜尋商品..."
+          placeholder={intl.formatMessage({ id: "navbar.search" })}
           onSearch={(value) => console.log(value)}
           style={{ width: 200 }}
           className="dark:bg-gray-700 dark:text-white"
@@ -39,6 +44,8 @@ const Navbar = () => {
 
         {/* Language select */}
         <Select
+          suffixIcon={<GlobalOutlined />}
+          onChange={(val) => setLocale(val)}
           defaultValue="zh-TW"
           style={{ width: 80 }}
           options={[
@@ -49,16 +56,32 @@ const Navbar = () => {
 
         {/* Dark mode toggle */}
         <Button onClick={toggleDarkMode} size="middle" shape="circle">
-          {darkMode ? <SunOutlined /> : <MoonOutlined />}
+          {darkMode ? (
+            <SunOutlined style={{ fontSize: "20px" }} />
+          ) : (
+            <MoonOutlined style={{ fontSize: "20px" }} />
+          )}
         </Button>
 
         <div>
           <UserOutlined
-            style={darkMode ? { color: "white" } : { color: "black" }}
+            style={
+              darkMode
+                ? { color: "white", fontSize: "20px" }
+                : { color: "black", fontSize: "20px" }
+            }
           />
         </div>
 
-        <img style={{ width: 50 }} src={darkMode ? CartLight : CartDark} />
+        <div>
+          <ShoppingCartOutlined
+            style={
+              darkMode
+                ? { color: "white", fontSize: "20px" }
+                : { color: "black", fontSize: "20px" }
+            }
+          />
+        </div>
       </div>
     </nav>
   );
