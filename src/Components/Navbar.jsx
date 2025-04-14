@@ -11,6 +11,7 @@ import {
   SunOutlined,
   UserOutlined,
 } from "@ant-design/icons";
+import { Link } from "react-router-dom";
 
 const { Search } = Input;
 
@@ -27,14 +28,16 @@ const Navbar = (props) => {
   return (
     <nav className="flex items-center justify-between px-4 py-2 border-b dark:border-gray-700 dark:bg-gray-800">
       <div className="text-lg font-bold text-black dark:text-white">
-        <img
-          src={darkMode ? LogoLight : LogoDark}
-          style={{ maxWidth: "100px", maxHeight: "100px" }}
-        />
+        <Link to="/">
+          <img
+            src={darkMode ? LogoLight : LogoDark}
+            style={{ maxWidth: "100px", maxHeight: "100px" }}
+          />
+        </Link>
       </div>
 
       <div className="flex items-center gap-4">
-        {/* Antd Search bar */}
+
         <Search
           placeholder={intl.formatMessage({ id: "navbar.search" })}
           onSearch={(value) => console.log(value)}
@@ -42,7 +45,7 @@ const Navbar = (props) => {
           className="dark:bg-gray-700 dark:text-white"
         />
 
-        {/* Language select */}
+
         <Select
           suffixIcon={<GlobalOutlined />}
           onChange={(val) => setLocale(val)}
@@ -54,7 +57,7 @@ const Navbar = (props) => {
           ]}
         />
 
-        {/* Dark mode toggle */}
+
         <Button onClick={toggleDarkMode} size="middle" shape="circle">
           {darkMode ? (
             <SunOutlined style={{ fontSize: "20px" }} />
@@ -63,7 +66,7 @@ const Navbar = (props) => {
           )}
         </Button>
 
-        <div>
+        <Link to="/logIn">
           <UserOutlined
             style={
               darkMode
@@ -71,9 +74,9 @@ const Navbar = (props) => {
                 : { color: "black", fontSize: "20px" }
             }
           />
-        </div>
+        </Link>
 
-        <div>
+        <Link to="/cart">
           <ShoppingCartOutlined
             style={
               darkMode
@@ -81,7 +84,7 @@ const Navbar = (props) => {
                 : { color: "black", fontSize: "20px" }
             }
           />
-        </div>
+        </Link>
       </div>
     </nav>
   );

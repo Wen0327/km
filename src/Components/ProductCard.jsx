@@ -1,10 +1,11 @@
 import React from "react";
 
-const ProductCard = () => {
+const ProductCard = (props) => {
+const {idx} = props
   return (
     <div className="border rounded-lg p-2 shadow-sm hover:shadow-md transition dark:border-gray-700">
       <img
-        src="https://via.placeholder.com/150"
+        src={`https://robohash.org/${idx}`}
         alt="product"
         className="w-full h-32 object-contain mb-2"
       />

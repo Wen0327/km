@@ -1,4 +1,5 @@
 import React from "react";
+import { useIntl } from "react-intl";
 
 const categories = [
   "categories1",
@@ -12,9 +13,10 @@ const categories = [
 ];
 
 const CategorySidebar = () => {
+  const intl = useIntl();
   return (
     <div>
-      <h3 className="text-lg font-semibold mb-4">分類</h3>
+      <h3 className="text-lg font-semibold mb-4">{intl.formatMessage({ id: "all.products" })}</h3>
       <ul className="space-y-2">
         {categories.map((category, index) => (
           <li
