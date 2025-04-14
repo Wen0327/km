@@ -7,18 +7,18 @@ import LogoLight from "../Assets/LogoLight.png";
 import LogoDark from "../Assets/LogoDark.png";
 import {
   GlobalOutlined,
+  MenuOutlined,
   MoonOutlined,
   ShoppingCartOutlined,
   SunOutlined,
   UserOutlined,
 } from "@ant-design/icons";
 
-
 const { Search } = Input;
 
 const Navbar = (props) => {
-  const { setLocale } = props;
-  const [darkMode, setDarkMode] = useState(false);
+  const { setLocale, locale, setSidebarVisible, darkMode, setDarkMode } = props;
+  // const [darkMode, setDarkMode] = useState(false);
   const intl = useIntl();
 
   const toggleDarkMode = () => {
@@ -27,7 +27,7 @@ const Navbar = (props) => {
   };
 
   return (
-    <nav className="flex items-center justify-between px-4 py-2 border-b dark:border-gray-700 dark:bg-gray-800">
+    <nav className="flex flex-wrap items-center justify-between px-4 py-2 border-b dark:border-gray-700 dark:bg-gray-800">
       <div className="text-lg font-bold text-black dark:text-white">
         <Link to="/">
           <img
@@ -37,27 +37,24 @@ const Navbar = (props) => {
         </Link>
       </div>
 
-      <div className="flex items-center gap-4">
-
+      <div className="flex items-center gap-2 flex-wrap justify-end w-full sm:w-auto mt-2 sm:mt-0">
         <Search
           placeholder={intl.formatMessage({ id: "navbar.search" })}
           onSearch={(value) => console.log(value)}
-          style={{ width: 200 }}
+          style={{ width: 160 }}
           className="dark:bg-gray-700 dark:text-white"
         />
-
 
         <Select
           suffixIcon={<GlobalOutlined />}
           onChange={(val) => setLocale(val)}
-          defaultValue="zh-TW"
+          value={locale}
           style={{ width: 80 }}
           options={[
             { value: "zh-TW", label: "中文" },
             { value: "en", label: "EN" },
           ]}
         />
-
 
         <Button onClick={toggleDarkMode} size="middle" shape="circle">
           {darkMode ? (
@@ -69,23 +66,23 @@ const Navbar = (props) => {
 
         <Link to="/logIn">
           <UserOutlined
-            style={
-              darkMode
-                ? { color: "white", fontSize: "20px" }
-                : { color: "black", fontSize: "20px" }
-            }
+            style={{ color: darkMode ? "white" : "black", fontSize: "20px" }}
           />
         </Link>
 
         <Link to="/cart">
           <ShoppingCartOutlined
-            style={
-              darkMode
-                ? { color: "white", fontSize: "20px" }
-                : { color: "black", fontSize: "20px" }
-            }
+            style={{ color: darkMode ? "white" : "black", fontSize: "20px" }}
           />
         </Link>
+
+        <Button
+          icon={<MenuOutlined />}
+          onClick={() => setSidebarVisible(true)}
+          shape="circle"
+          size="middle"
+          className="lg:hidden"
+        />
       </div>
     </nav>
   );

@@ -16,6 +16,7 @@ const messages = {
 function App() {
   const [locale, setLocale] = useState("zh-TW");
   const [darkMode, setDarkMode] = useState(false);
+  const [sidebarVisible, setSidebarVisible] = useState(false);
 
   return (
     <IntlProvider locale={locale} messages={messages[locale]}>
@@ -25,9 +26,18 @@ function App() {
           setLocale={setLocale}
           darkMode={darkMode}
           setDarkMode={setDarkMode}
+          setSidebarVisible={setSidebarVisible}
         />
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route
+            path="/"
+            element={
+              <HomePage
+                sidebarVisible={sidebarVisible}
+                setSidebarVisible={setSidebarVisible}
+              />
+            }
+          />
           <Route path="/logIn" element={<LogInPage />} />
           <Route path="/cart" element={<CartPage />} />
         </Routes>
