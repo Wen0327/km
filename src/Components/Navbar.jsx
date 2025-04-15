@@ -30,7 +30,7 @@ const Navbar = (props) => {
   } = props;
   // const [darkMode, setDarkMode] = useState(false);
   const intl = useIntl();
-  const { isAuthenticated, logout } = useAuth();
+  const { isAuthenticated } = useAuth();
 
   const toggleDarkMode = () => {
     setDarkMode((prev) => !prev);
@@ -81,10 +81,14 @@ const Navbar = (props) => {
           </Button>
 
           {isAuthenticated ? (
-            <LogoutOutlined
-              onClick={logout}
-              style={{ color: darkMode ? "white" : "black", fontSize: "20px" }}
-            />
+            <Link to="/userInfo">
+              <UserOutlined
+                style={{
+                  color: darkMode ? "white" : "black",
+                  fontSize: "20px",
+                }}
+              />
+            </Link>
           ) : (
             <Link to="/logIn">
               <UserOutlined

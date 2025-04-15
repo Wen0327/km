@@ -33,6 +33,7 @@ function App() {
         />
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/userInfo" element={<CartPage />} />
           <Route path="/logIn" element={<LogInPage />} />
           <Route path="/cart" element={<CartPage />} />
         </Routes>

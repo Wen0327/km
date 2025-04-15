@@ -1,23 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   MailOutlined,
   EyeTwoTone,
   EyeInvisibleOutlined,
   LoadingOutlined,
-  PhoneOutlined,
   GoogleOutlined,
 } from "@ant-design/icons";
-import { Input, Button, Tabs, Form, message } from "antd";
+import { Input, Button, Form, message } from "antd";
 import { useAuth } from "../Context/AuthContext";
-
-const { TabPane } = Tabs;
+import { getCookie } from "../Utils/cookies";
 
 const LoginPage = () => {
   const navigate = useNavigate();
   const { login } = useAuth();
   const [loading, setLoading] = useState(false);
-  const [loginType, setLoginType] = useState("email");
+
+  useEffect(() => {
+    const token = getCookie("api_key");
+    if (token) {
+      navigate("/");
+    }
+  }, [navigate]);
 
   const handleLogin = (values) => {
     setLoading(true);
@@ -32,23 +36,16 @@ const LoginPage = () => {
     }, 1500);
   };
 
-  const renderForm = (type) => (
+  const renderForm = () => (
     <Form layout="vertical" onFinish={handleLogin}>
       <Form.Item
-        name={type === "email" ? "email" : "phone"}
-        rules={
-          type === "email"
-            ? [
-                { required: true, message: "請輸入 Email" },
-                { type: "email", message: "Email 格式錯誤" },
-              ]
-            : [{ required: true, message: "請輸入電話號碼" }]
-        }
+        name="email"
+        rules={[
+          { required: true, message: "請輸入 Email" },
+          { type: "email", message: "Email 格式錯誤" },
+        ]}
       >
-        <Input
-          placeholder={type === "email" ? "Email" : "電話號碼"}
-          prefix={type === "email" ? <MailOutlined /> : <PhoneOutlined />}
-        />
+        <Input placeholder="Email" prefix={<MailOutlined />} />
       </Form.Item>
 
       <Form.Item
@@ -85,20 +82,7 @@ const LoginPage = () => {
         <h2 className="text-2xl font-bold text-center text-gray-800 dark:text-white mb-6">
           登入
         </h2>
-
-        <Tabs
-          className="login_tabs"
-          activeKey={loginType}
-          onChange={setLoginType}
-          centered
-        >
-          <TabPane tab="Email" key="email">
-            {renderForm("email")}
-          </TabPane>
-          <TabPane tab="電話號碼" key="phone">
-            {renderForm("phone")}
-          </TabPane>
-        </Tabs>
+        {renderForm()}
 
         <div className="text-center my-4">
           <span className="text-gray-500 dark:text-gray-300">或使用</span>
