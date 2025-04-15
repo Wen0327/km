@@ -1,7 +1,7 @@
 // components/Navbar.jsx
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { useIntl, FormattedMessage } from "react-intl";
+import { useIntl } from "react-intl";
 import { Input, Select, Button } from "antd";
 import LogoLight from "../Assets/LogoLight.png";
 import LogoDark from "../Assets/LogoDark.png";
@@ -12,8 +12,10 @@ import {
   ShoppingCartOutlined,
   SunOutlined,
   UserOutlined,
+  LogoutOutlined,
 } from "@ant-design/icons";
 import MobileSidebar from "./MobileSidebar";
+import { useAuth } from "../Context/AuthContext";
 
 const { Search } = Input;
 
@@ -28,6 +30,7 @@ const Navbar = (props) => {
   } = props;
   // const [darkMode, setDarkMode] = useState(false);
   const intl = useIntl();
+  const { isAuthenticated, logout } = useAuth();
 
   const toggleDarkMode = () => {
     setDarkMode((prev) => !prev);
@@ -43,6 +46,7 @@ const Navbar = (props) => {
         />
         <Link to="/">
           <img
+            alt="logo"
             src={darkMode ? LogoLight : LogoDark}
             style={{ maxWidth: "100px", maxHeight: "100px" }}
           />
@@ -76,11 +80,21 @@ const Navbar = (props) => {
             )}
           </Button>
 
-          <Link to="/logIn">
-            <UserOutlined
+          {isAuthenticated ? (
+            <LogoutOutlined
+              onClick={logout}
               style={{ color: darkMode ? "white" : "black", fontSize: "20px" }}
             />
-          </Link>
+          ) : (
+            <Link to="/logIn">
+              <UserOutlined
+                style={{
+                  color: darkMode ? "white" : "black",
+                  fontSize: "20px",
+                }}
+              />
+            </Link>
+          )}
 
           <Link to="/cart">
             <ShoppingCartOutlined

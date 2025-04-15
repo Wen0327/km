@@ -26,3 +26,20 @@
     border-radius: 6px;
     opacity: 100 !important;
 }
+
+
+.login_tabs .ant-tabs-tab {
+    color: black;
+}
+
+.dark .login_tabs .ant-tabs-tab {
+    color: white;
+}
+
+.login_tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+    font-weight: bold;
+}
+
+.dark .login_tabs .ant-tabs-ink-bar {
+    background-color: white;
+}

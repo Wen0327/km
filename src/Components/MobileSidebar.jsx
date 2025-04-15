@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import CategorySidebar from "../Components/CategorySidebar";
-import { Drawer, Button } from "antd";
+import { Drawer } from "antd";
 
 const MobileSidebar = ({ open, onClose }) => {
   return (

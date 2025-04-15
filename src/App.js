@@ -7,6 +7,7 @@ import Navbar from "./Components/Navbar";
 import HomePage from "./Pages/HomePage";
 import CartPage from "./Pages/CartPage";
 import LogInPage from "./Pages/LogInPage";
+import { AuthProvider } from "./Context/AuthContext";
 
 const messages = {
   "zh-TW": zh,
@@ -20,6 +21,7 @@ function App() {
 
   return (
     <IntlProvider locale={locale} messages={messages[locale]}>
+    <AuthProvider>
       <Router>
         <Navbar
           locale={locale}
@@ -35,6 +37,7 @@ function App() {
           <Route path="/cart" element={<CartPage />} />
         </Routes>
       </Router>
+      </AuthProvider>
     </IntlProvider>
   );
 }
