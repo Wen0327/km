@@ -1,3 +1,28 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.ant-pagination-item-link {
+    background-color: white !important;
+}
+
+.ant-pagination-item {
+    background-color: white !important;
+    color: black !important;
+    border: 1px solid #d9d9d9 !important;
+}
+
+.ant-pagination-item-active>a {
+    color: white !important;
+}
+
+.ant-pagination-item-active {
+    background-color: #1677ff !important;
+    border-color: #1677ff !important;
+}
+
+.ant-pagination-item-ellipsis {
+    background-color: white !important;
+    border-radius: 6px;
+    opacity: 100 !important;
+}
