@@ -16,12 +16,14 @@ const CategorySidebar = () => {
   const intl = useIntl();
   return (
     <div>
-      <h3 className="text-lg font-semibold mb-4">{intl.formatMessage({ id: "all.products" })}</h3>
+      <h3 className="flex text-lg font-semibold mb-4 items-center justify-center">
+        {intl.formatMessage({ id: "all.products" })}
+      </h3>
       <ul className="space-y-2">
         {categories.map((category, index) => (
           <li
             key={index}
-            className="cursor-pointer hover:underline text-blue-600 dark:text-blue-300"
+            className="flex cursor-pointer hover:underline text-blue-600 dark:text-blue-300 items-center justify-center"
           >
             {category}
           </li>

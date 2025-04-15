@@ -26,18 +26,11 @@ function App() {
           setLocale={setLocale}
           darkMode={darkMode}
           setDarkMode={setDarkMode}
+          sidebarVisible={sidebarVisible}
           setSidebarVisible={setSidebarVisible}
         />
         <Routes>
-          <Route
-            path="/"
-            element={
-              <HomePage
-                sidebarVisible={sidebarVisible}
-                setSidebarVisible={setSidebarVisible}
-              />
-            }
-          />
+          <Route path="/" element={<HomePage />} />
           <Route path="/logIn" element={<LogInPage />} />
           <Route path="/cart" element={<CartPage />} />
         </Routes>

@@ -13,11 +13,19 @@ import {
   SunOutlined,
   UserOutlined,
 } from "@ant-design/icons";
+import MobileSidebar from "./MobileSidebar";
 
 const { Search } = Input;
 
 const Navbar = (props) => {
-  const { setLocale, locale, setSidebarVisible, darkMode, setDarkMode } = props;
+  const {
+    setLocale,
+    locale,
+    sidebarVisible,
+    setSidebarVisible,
+    darkMode,
+    setDarkMode,
+  } = props;
   // const [darkMode, setDarkMode] = useState(false);
   const intl = useIntl();
 
@@ -29,6 +37,10 @@ const Navbar = (props) => {
   return (
     <nav className="relative flex flex-col sm:flex-row items-start sm:items-center justify-between px-4 py-2 border-b dark:border-gray-700 dark:bg-gray-800">
       <div className="text-lg font-bold text-black dark:text-white mb-2 sm:mb-0">
+        <MobileSidebar
+          open={sidebarVisible}
+          onClose={() => setSidebarVisible(false)}
+        />
         <Link to="/">
           <img
             src={darkMode ? LogoLight : LogoDark}
