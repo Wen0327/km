@@ -27,8 +27,8 @@ const Navbar = (props) => {
   };
 
   return (
-    <nav className="flex flex-wrap items-center justify-between px-4 py-2 border-b dark:border-gray-700 dark:bg-gray-800">
-      <div className="text-lg font-bold text-black dark:text-white">
+    <nav className="relative flex flex-col sm:flex-row items-start sm:items-center justify-between px-4 py-2 border-b dark:border-gray-700 dark:bg-gray-800">
+      <div className="text-lg font-bold text-black dark:text-white mb-2 sm:mb-0">
         <Link to="/">
           <img
             src={darkMode ? LogoLight : LogoDark}
@@ -37,7 +37,7 @@ const Navbar = (props) => {
         </Link>
       </div>
 
-      <div className="flex items-center gap-2 flex-wrap justify-end w-full sm:w-auto mt-2 sm:mt-0">
+      <div className="flex flex-wrap items-center gap-2 sm:gap-4 w-full sm:w-auto justify-end">
         <Search
           placeholder={intl.formatMessage({ id: "navbar.search" })}
           onSearch={(value) => console.log(value)}
@@ -55,34 +55,35 @@ const Navbar = (props) => {
             { value: "en", label: "EN" },
           ]}
         />
+        <div className="absolute top-2 right-4 flex items-center gap-2 sm:static sm:top-auto sm:right-auto">
+          <Button onClick={toggleDarkMode} size="middle" shape="circle">
+            {darkMode ? (
+              <SunOutlined style={{ fontSize: "20px" }} />
+            ) : (
+              <MoonOutlined style={{ fontSize: "20px" }} />
+            )}
+          </Button>
 
-        <Button onClick={toggleDarkMode} size="middle" shape="circle">
-          {darkMode ? (
-            <SunOutlined style={{ fontSize: "20px" }} />
-          ) : (
-            <MoonOutlined style={{ fontSize: "20px" }} />
-          )}
-        </Button>
+          <Link to="/logIn">
+            <UserOutlined
+              style={{ color: darkMode ? "white" : "black", fontSize: "20px" }}
+            />
+          </Link>
 
-        <Link to="/logIn">
-          <UserOutlined
-            style={{ color: darkMode ? "white" : "black", fontSize: "20px" }}
+          <Link to="/cart">
+            <ShoppingCartOutlined
+              style={{ color: darkMode ? "white" : "black", fontSize: "20px" }}
+            />
+          </Link>
+
+          <Button
+            icon={<MenuOutlined />}
+            onClick={() => setSidebarVisible(true)}
+            shape="circle"
+            size="middle"
+            className="lg:hidden"
           />
-        </Link>
-
-        <Link to="/cart">
-          <ShoppingCartOutlined
-            style={{ color: darkMode ? "white" : "black", fontSize: "20px" }}
-          />
-        </Link>
-
-        <Button
-          icon={<MenuOutlined />}
-          onClick={() => setSidebarVisible(true)}
-          shape="circle"
-          size="middle"
-          className="lg:hidden"
-        />
+        </div>
       </div>
     </nav>
   );
