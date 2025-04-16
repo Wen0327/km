@@ -1,6 +1,8 @@
 import React from "react";
+import { useI18n } from "../Utils/intlHelper";
 
 const ProductCard = (props) => {
+  const { intlHelper } = useI18n();
 const {idx} = props
   return (
     <div className="border rounded-lg p-2 shadow-sm hover:shadow-md transition dark:border-gray-700">

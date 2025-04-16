@@ -1,5 +1,5 @@
 import React from "react";
-import { useIntl } from "react-intl";
+import { useI18n } from "../Utils/intlHelper";
 
 const categories = [
   "categories1",
@@ -13,11 +13,11 @@ const categories = [
 ];
 
 const CategorySidebar = () => {
-  const intl = useIntl();
+  const { intlHelper } = useI18n();
   return (
     <div>
       <h3 className="flex text-lg font-semibold mb-4 items-center justify-center">
-        {intl.formatMessage({ id: "all.products" })}
+        {intlHelper("all.products")}
       </h3>
       <ul className="space-y-2">
         {categories.map((category, index) => (

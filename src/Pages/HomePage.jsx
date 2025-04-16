@@ -1,14 +1,15 @@
-// pages/HomePage.jsx
 import React, { useState } from "react";
 import CategorySidebar from "../Components/CategorySidebar";
 import ProductCard from "../Components/ProductCard";
 import SortProductSelector from "../Components/SortProductSelector";
 import PaginationController from "../Components/PaginationController";
+import { useI18n } from "../Utils/intlHelper";
 
 const TOTAL_PRODUCTS = 500;
 const PAGE_SIZE = 48;
 
 const HomePage = (props) => {
+  const { intlHelper } = useI18n();
   const [currentPage, setCurrentPage] = useState(1);
 
   const allProducts = Array.from({ length: TOTAL_PRODUCTS }).map((_, idx) => ({

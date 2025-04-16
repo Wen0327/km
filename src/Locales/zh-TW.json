@@ -1,6 +1,15 @@
 {
-    "navbar.search": "搜尋商品...",
-    "navbar.language": "語言",
-    "all.products":"所有產品"
-  }
-  
+  "navbar.search": "搜尋商品...",
+  "navbar.language": "語言",
+  "all.products": "所有產品",
+  "Please.enter.your.email": "請輸入 Email",
+  "Invalid.email.format": "Email 格式錯誤",
+  "Please.enter.your.password": "請輸入密碼",
+  "Forgot.password.?": "忘記密碼？",
+  "Logging.in...": "登入中...",
+  "Log.in": "登入",
+  "Or.use": "或使用",
+  "Sign.in.with.Google": "使用 Google 登入",
+  "Don't.have.an.account.?": "還沒有帳號？",
+  "Sign.up": "註冊"
+}

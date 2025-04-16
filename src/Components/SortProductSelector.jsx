@@ -1,9 +1,11 @@
 import { Select } from "antd";
 import React from "react";
+import { useI18n } from "../Utils/intlHelper";
 
 const { Option } = Select;
 
 const SortProductSelector = ({ onChangeSort }) => {
+  const { intlHelper } = useI18n();
   return (
     <div className="flex justify-end mb-4">
       <Select

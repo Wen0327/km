@@ -1,7 +1,6 @@
 // components/Navbar.jsx
 import React from "react";
 import { Link } from "react-router-dom";
-import { useIntl } from "react-intl";
 import { Input, Select, Button } from "antd";
 import LogoLight from "../Assets/LogoLight.png";
 import LogoDark from "../Assets/LogoDark.png";
@@ -16,6 +15,7 @@ import {
 } from "@ant-design/icons";
 import MobileSidebar from "./MobileSidebar";
 import { useAuth } from "../Context/AuthContext";
+import { useI18n } from "../Utils/intlHelper";
 
 const { Search } = Input;
 
@@ -28,8 +28,7 @@ const Navbar = (props) => {
     darkMode,
     setDarkMode,
   } = props;
-  // const [darkMode, setDarkMode] = useState(false);
-  const intl = useIntl();
+  const { intlHelper } = useI18n();
   const { isAuthenticated } = useAuth();
 
   const toggleDarkMode = () => {
@@ -55,7 +54,7 @@ const Navbar = (props) => {
 
       <div className="flex flex-wrap items-center gap-2 sm:gap-4 w-full sm:w-auto justify-end">
         <Search
-          placeholder={intl.formatMessage({ id: "navbar.search" })}
+          placeholder={intlHelper("navbar.search")}
           onSearch={(value) => console.log(value)}
           style={{ width: 160 }}
           className="dark:bg-gray-700 dark:text-white"

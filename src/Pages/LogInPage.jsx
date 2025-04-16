@@ -10,8 +10,10 @@ import {
 import { Input, Button, Form, message } from "antd";
 import { useAuth } from "../Context/AuthContext";
 import { getCookie } from "../Utils/cookies";
+import { useI18n } from "../Utils/intlHelper";
 
 const LoginPage = () => {
+  const { intlHelper } = useI18n();
   const navigate = useNavigate();
   const { login } = useAuth();
   const [loading, setLoading] = useState(false);
@@ -41,8 +43,8 @@ const LoginPage = () => {
       <Form.Item
         name="email"
         rules={[
-          { required: true, message: "請輸入 Email" },
-          { type: "email", message: "Email 格式錯誤" },
+          { required: true, message: intlHelper("Please.enter.your.email") },
+          { type: "email", message: intlHelper("Invalid.email.format") },
         ]}
       >
         <Input placeholder="Email" prefix={<MailOutlined />} />
@@ -53,7 +55,7 @@ const LoginPage = () => {
         rules={[{ required: true, message: "請輸入密碼" }]}
       >
         <Input.Password
-          placeholder="密碼"
+          placeholder="Password"
           iconRender={(visible) =>
             visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
           }
@@ -61,7 +63,9 @@ const LoginPage = () => {
       </Form.Item>
 
       <div className="flex justify-between mb-4">
-        <a className="text-sm text-blue-500 hover:underline">忘記密碼？</a>
+        <a className="text-sm text-blue-500 hover:underline">
+          {intlHelper("Forgot.password.?")}
+        </a>
       </div>
 
       <Button
