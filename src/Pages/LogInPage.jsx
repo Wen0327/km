@@ -52,7 +52,9 @@ const LoginPage = () => {
 
       <Form.Item
         name="password"
-        rules={[{ required: true, message: "請輸入密碼" }]}
+        rules={[
+          { required: true, message: intlHelper("Please.enter.your.password") },
+        ]}
       >
         <Input.Password
           placeholder="Password"
@@ -75,7 +77,7 @@ const LoginPage = () => {
         icon={loading ? <LoadingOutlined /> : null}
         disabled={loading}
       >
-        {loading ? "登入中..." : "登入"}
+        {loading ? intlHelper("Logging.in...") : intlHelper("Log.in")}
       </Button>
     </Form>
   );
@@ -84,22 +86,26 @@ const LoginPage = () => {
     <div className="min-h-screen flex items-center justify-center bg-gray-100 dark:bg-gray-900 transition-all duration-300">
       <div className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md w-full max-w-md animate-fade-in">
         <h2 className="text-2xl font-bold text-center text-gray-800 dark:text-white mb-6">
-          登入
+          {intlHelper("Log.in")}
         </h2>
         {renderForm()}
 
         <div className="text-center my-4">
-          <span className="text-gray-500 dark:text-gray-300">或使用</span>
+          <span className="text-gray-500 dark:text-gray-300">
+            {intlHelper("Or.use")}
+          </span>
         </div>
 
         <Button icon={<GoogleOutlined />} className="w-full mb-2">
-          使用 Google 登入
+          {intlHelper("Sign.in.with.Google")}
         </Button>
 
         <div className="text-center mt-4">
-          <span className="text-gray-600 dark:text-gray-300">還沒有帳號？</span>
+          <span className="text-gray-600 dark:text-gray-300">
+            {intlHelper("Don't.have.an.account.?")}
+          </span>
           <a href="/signup" className="ml-1 text-blue-500 hover:underline">
-            註冊
+            {intlHelper("Sign.up")}
           </a>
         </div>
       </div>

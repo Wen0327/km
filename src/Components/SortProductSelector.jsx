@@ -11,12 +11,12 @@ const SortProductSelector = ({ onChangeSort }) => {
       <Select
         defaultValue="default"
         style={{ width: 160 }}
-        onChange={(value)=>onChangeSort(value)}
+        onChange={(value) => onChangeSort(value)}
       >
-        <Option value="default">預設排序</Option>
-        <Option value="price-asc">價格由低到高</Option>
-        <Option value="price-desc">價格由高到低</Option>
-        <Option value="newest">最新上架</Option>
+        <Option value="default">{intlHelper("Default.sorting")}</Option>
+        <Option value="price-asc">{intlHelper("Price.low.to.high")}</Option>
+        <Option value="price-desc">{intlHelper("Price.high.to.low")}</Option>
+        <Option value="newest">{intlHelper("Newest.arrivals")}</Option>
       </Select>
     </div>
   );

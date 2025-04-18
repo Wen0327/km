@@ -1,16 +1,19 @@
 {
-    "navbar.search": "Search products...",
-    "navbar.language": "Language",
-    "all.products":"All products",
-    "Please.enter.your.email":"Please enter your email",
-    "Invalid.email.format":"Invalid email format",
-    "Please.enter.your.password":"Please enter your password",
-    "Forgot.password.?":"Forgot password?",
-    "Logging.in...": "Logging in...",
-    "Log.in": "Log In",
-    "Or.use": "Or use",
-    "Sign.in.with.Google": "Sign in with Google",
-    "Don't.have.an.account.?": "Don't have an account?",
-    "Sign.up": "Sign Up"
-  }
-  
+  "navbar.search": "Search products...",
+  "navbar.language": "Language",
+  "all.products": "All products",
+  "Please.enter.your.email": "Please enter your email",
+  "Invalid.email.format": "Invalid email format",
+  "Please.enter.your.password": "Please enter your password",
+  "Forgot.password.?": "Forgot password?",
+  "Logging.in...": "Logging in...",
+  "Log.in": "Log In",
+  "Or.use": "Or use",
+  "Sign.in.with.Google": "Sign in with Google",
+  "Don't.have.an.account.?": "Don't have an account?",
+  "Sign.up": "Sign Up",
+  "Default.sorting": "Default sorting",
+  "Price.low.to.high": "Price low to high",
+  "Price.high.to.low": "Price high to low",
+  "Newest.arrivals": "Newest arrivals"
+}
