@@ -15,5 +15,7 @@
   "Default.sorting": "Default sorting",
   "Price.low.to.high": "Price low to high",
   "Price.high.to.low": "Price high to low",
-  "Newest.arrivals": "Newest arrivals"
+  "Newest.arrivals": "Newest arrivals",
+  "Settings": "Settings",
+  "personal.settings": "personal settings"
 }

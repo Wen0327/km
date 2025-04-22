@@ -7,6 +7,16 @@ import { useI18n } from "../Utils/intlHelper";
 
 const TOTAL_PRODUCTS = 500;
 const PAGE_SIZE = 48;
+const categories = [
+    "categories1",
+    "categories2",
+    "categories3",
+    "categories4",
+    "categories5",
+    "categories6",
+    "categories7",
+    "categories8",
+  ];
 
 const HomePage = (props) => {
   const { intlHelper } = useI18n();
@@ -32,7 +42,7 @@ const HomePage = (props) => {
   return (
     <div className="flex flex-col lg:flex-row min-h-screen dark:bg-gray-900 dark:text-white">
       <aside className="hidden lg:block lg:w-1/5 border-r p-4">
-        <CategorySidebar />
+        <CategorySidebar categories={categories} title="all.products"/>
       </aside>
 
       <main className="flex-1 p-4">

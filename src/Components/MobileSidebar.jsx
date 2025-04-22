@@ -2,6 +2,17 @@ import React from "react";
 import CategorySidebar from "../Components/CategorySidebar";
 import { Drawer } from "antd";
 
+const categories = [
+  "categories1",
+  "categories2",
+  "categories3",
+  "categories4",
+  "categories5",
+  "categories6",
+  "categories7",
+  "categories8",
+];
+
 const MobileSidebar = ({ open, onClose }) => {
   return (
     <Drawer
@@ -14,7 +25,7 @@ const MobileSidebar = ({ open, onClose }) => {
       bodyStyle={{ padding: 0 }}
       width={280}
     >
-      <CategorySidebar />
+      <CategorySidebar categories={categories} title="all.products" />
     </Drawer>
   );
 };

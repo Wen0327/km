@@ -8,6 +8,7 @@ import HomePage from "./Pages/HomePage";
 import CartPage from "./Pages/CartPage";
 import LogInPage from "./Pages/LogInPage";
 import { AuthProvider } from "./Context/AuthContext";
+import UserInfoPage from "./Pages/UserInfoPage";
 
 const messages = {
   "zh-TW": zh,
@@ -33,7 +34,7 @@ function App() {
           />
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/userInfo" element={<CartPage />} />
+            <Route path="/userInfo" element={<UserInfoPage />} />
             <Route path="/logIn" element={<LogInPage />} />
             <Route path="/cart" element={<CartPage />} />
           </Routes>
