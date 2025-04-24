@@ -17,5 +17,14 @@
   "Price.high.to.low": "Price high to low",
   "Newest.arrivals": "Newest arrivals",
   "Settings": "Settings",
-  "personal.settings": "personal settings"
+  "personal.settings": "personal settings",
+  "First.name": "First name",
+  "Last.name": "Last name",
+  "Email": "Email",
+  "Phone.number": "Phone number",
+  "Gender": "Gender",
+  "Male": "Male",
+  "Female": "Female",
+  "Prefer.not.to.say": "Prefer not to say",
+  "Birthday": "Birthday"
 }

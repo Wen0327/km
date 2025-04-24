@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { Input, DatePicker, Select, Button, Form, Space } from "antd";
 import dayjs from "dayjs";
+import { useI18n } from "../Utils/intlHelper";
 
 const { Option } = Select;
 
@@ -14,32 +15,21 @@ const initialUserInfo = {
   birthday: null,
 };
 
-// 欄位設定，一次管理所有 field
-const fieldConfigs = [
-  { name: "firstName", label: "名字", type: "text" },
-  { name: "lastName", label: "姓氏", type: "text" },
-  { name: "email", label: "Email", type: "text" },
-  { name: "phone", label: "電話號碼", type: "text" },
-  {
-    name: "gender",
-    label: "性別",
-    type: "select",
-    options: [
-      { value: "male", label: "男性" },
-      { value: "female", label: "女性" },
-      { value: "other", label: "其他" },
-    ],
-  },
-  { name: "birthday", label: "生日", type: "date" },
-];
-
-// 共用 Grid 排版元件
+// Grid Component
 const FormGrid = ({ cols = 2, children }) => (
-  <div className={`grid grid-cols-1 sm:grid-cols-${cols} gap-4`}>{children}</div>
+  <div className={`grid grid-cols-1 sm:grid-cols-${cols} gap-4`}>
+    {children}
+  </div>
 );
 
-// 統一 FieldRenderer
-const FieldRenderer = ({ name, label, type, options = [], isEditing, userInfo }) => (
+const FieldRenderer = ({
+  name,
+  label,
+  type,
+  options = [],
+  isEditing,
+  userInfo,
+}) => (
   <Form.Item
     key={name}
     name={name}
@@ -48,15 +38,19 @@ const FieldRenderer = ({ name, label, type, options = [], isEditing, userInfo })
   >
     {isEditing ? (
       type === "text" ? (
-        <Input placeholder={`請輸入${label}`} />
+        <Input placeholder={label} />
       ) : type === "select" ? (
-        <Select placeholder={`選擇${label}`}>{options.map((opt) => (
-          <Option key={opt.value} value={opt.value}>{opt.label}</Option>
-        ))}</Select>
+        <Select placeholder={label}>
+          {options.map((opt) => (
+            <Option key={opt.value} value={opt.value}>
+              {opt.label}
+            </Option>
+          ))}
+        </Select>
       ) : type === "date" ? (
-        <DatePicker className="w-full" placeholder={`選擇${label}`} />
+        <DatePicker className="w-full" placeholder={label} />
       ) : (
-        <Input placeholder={`請輸入${label}`} />
+        <Input placeholder={label} />
       )
     ) : (
       <div className="py-2 px-3 rounded bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-white">
@@ -114,6 +108,7 @@ const UserProfile = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [showPasswordFields, setShowPasswordFields] = useState(false);
   const [userInfo, setUserInfo] = useState(initialUserInfo);
+  const { intlHelper } = useI18n();
 
   const handleSubmit = (values) => {
     console.log("更新使用者資料:", values);
@@ -128,6 +123,24 @@ const UserProfile = () => {
     setIsEditing(false);
   };
 
+  const fieldConfigs = [
+    { name: "firstName", label: intlHelper("First.name"), type: "text" },
+    { name: "lastName", label: intlHelper("Last.name"), type: "text" },
+    { name: "email", label: intlHelper("Email"), type: "text" },
+    { name: "phone", label: intlHelper("Phone.number"), type: "text" },
+    {
+      name: "gender",
+      label: intlHelper("Gender"),
+      type: "select",
+      options: [
+        { value: "male", label: intlHelper("Male") },
+        { value: "female", label: intlHelper("Female") },
+        { value: "other", label: intlHelper("Prefer.not.to.say") },
+      ],
+    },
+    { name: "birthday", label: intlHelper("Birthday"), type: "date" },
+  ];
+
   return (
     <div className="max-w-2xl mx-auto">
       <div className="flex justify-between items-center mb-6">
@@ -139,7 +152,9 @@ const UserProfile = () => {
               form.setFieldsValue(userInfo);
               setIsEditing(true);
             }}
-          >編輯</Button>
+          >
+            編輯
+          </Button>
         )}
       </div>
 
@@ -172,7 +187,11 @@ const UserProfile = () => {
         {isEditing && (
           <Form.Item>
             <Space className="w-full flex justify-between">
-              <Button htmlType="button" onClick={handleCancel} className="w-[48%]">
+              <Button
+                htmlType="button"
+                onClick={handleCancel}
+                className="w-[48%]"
+              >
                 取消
               </Button>
               <Button type="primary" htmlType="submit" className="w-[48%]">

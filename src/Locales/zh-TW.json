@@ -17,5 +17,14 @@
   "Price.high.to.low": "價格由高到低",
   "Newest.arrivals": "最新上架",
   "Settings": "設定",
-  "personal.settings": "個人設定"
+  "personal.settings": "個人設定",
+  "First.name": "名字",
+  "Last.name": "姓氏",
+  "Email": "電子郵件",
+  "Phone.number": "電話號碼",
+  "Gender": "性別",
+  "Male": "男性",
+  "Female": "女性",
+  "Prefer.not.to.say": "不願透露",
+  "Birthday": "生日"
 }
