@@ -1,0 +1,16 @@
+version: "3"
+services:
+  react:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules #防止本機的 node_modules 被掛進容器裡造成錯誤或衝突。
+
+    environment:
+      - CHOKIDAR_USEPOLLING=true # 解決 Linux 下熱重載問題
+    command: npm start
+    
+# 啟動 docker-compose up --build
+# 優雅關閉（會停止所有服務但保留容器） docker-compose down
